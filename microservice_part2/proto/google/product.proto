@@ -1,0 +1,221 @@
+syntax = "proto3";
+
+//定义了一个名为 Empty 的消息类型，这个类型不包含任何字段。
+// 这个类型的主要用途是作为那些不需要返回任何数据的 RPC（远程过程调用）方法的响应类型，
+// 或者作为那些只需要发送请求而不需要携带任何额外信息的 RPC 方法的请求类型。
+import "google/protobuf/empty.proto";
+
+option go_package = "/pb";
+
+service ProductService{
+  //产品：
+  rpc ProductList(ProductionConditionReq) returns (ProductRes);
+    // Get By ID
+  rpc BatchGetProduct(BatchProductIdReq) returns (ProductRes);
+    // Create
+  rpc CreateProduct(CreateProductItem) returns (ProductItemRes);
+  rpc DeleteProduct(DeleteProductItem) returns (google.protobuf.Empty);
+  rpc UpdateProduct(CreateProductItem) returns (google.protobuf.Empty);
+  rpc GetProductDetail(ProductItemReq) returns (ProductItemRes);
+
+  //产品分类：
+  rpc GetAllCategoryList(google.protobuf.Empty) returns (CategoriesRes);
+  rpc GetSubCategory(CategoriesReq) returns (SubCategoriesRes);
+  rpc CreateCategory(CategoryItemReq) returns (CategoryItemRes);
+  rpc DeleteCategory(CategoryDelReq) returns (google.protobuf.Empty);
+  rpc UpdateCategory(CategoryItemReq) returns (google.protobuf.Empty);
+
+  //品牌
+  rpc BrandList(BrandPagingReq) returns (BrandRes);
+  rpc CreateBrand(BrandItemReq) returns (BrandItemRes);
+  rpc DeleteBrand(BrandItemReq) returns (google.protobuf.Empty);
+  rpc UpdateBrand(BrandItemReq) returns (google.protobuf.Empty);
+
+  //广告
+  rpc AdvertiseLIst(google.protobuf.Empty) returns (AdvertiseRes);
+  rpc CreateAdvertise(AdvertiseReq) returns (AdvertiseItemRes);
+  rpc DeleteAdvertise(AdvertiseReq) returns (google.protobuf.Empty);
+  rpc UpdateAdvertise(AdvertiseReq) returns (google.protobuf.Empty);
+
+  //品牌分类
+  rpc CategoryBrandList(PagingReq) returns (CateGoryBrandListRes);
+  rpc GetCategoryBrandList(CategoryItemReq) returns (BrandItemRes);
+  rpc CreateCategoryBrand(CategoryBrandReq) returns (CategoryBrandRes);
+  rpc DeleteCategoryBrand(CategoryBrandReq) returns (google.protobuf.Empty);
+  rpc UpdateCategoryBrand(CategoryBrandReq) returns (google.protobuf.Empty);
+}
+
+message CategoryBrandReq{
+  int32 id = 1;
+  BrandItemRes brand = 2;
+  CategoryItemRes category = 3;
+}
+
+message CateGoryBrandListRes{
+  int32 total = 1;
+  repeated CategoryBrandRes itemList = 2;
+}
+
+message CategoryBrandRes{
+  int32 id = 1;
+  BrandItemRes brand = 2;
+  CategoryItemRes category = 3;
+}
+
+message PagingReq{
+  int32 pageNo = 1;
+  int32 pageSize = 2;
+}
+
+message AdvertiseReq{
+  int32 id = 1;
+  int32 index = 2;
+  string image = 3;
+  string url=4;
+}
+
+message AdvertiseRes{
+  int32 total = 1;
+  repeated AdvertiseItemRes itemList = 2;
+}
+
+message AdvertiseItemRes{
+  int32 id = 1;
+  int32 index = 2;
+  string image = 3;
+  string url=4;
+}
+
+message BrandItemReq{
+  int32 id = 1;
+  string name = 2;
+  string logo = 3;
+}
+
+message BrandPagingReq{
+  int32 pageNo = 1;
+  int32 pageSize = 2;
+}
+
+message BrandRes{
+  int32 total = 1;
+  repeated BrandItemRes itemList = 2;
+}
+
+message BrandItemRes{
+  int32 id = 1;
+  string name = 2;
+  string logo = 3;
+}
+
+message CategoryDelReq{
+  int32 id = 1;
+}
+
+message SubCategoriesRes{
+  int32 total = 1;
+  CategoryItemRes info = 2;
+  repeated CategoryItemRes subCategoryList = 3;
+  string categoryJsonFormat = 4;
+}
+
+message CategoriesReq{
+  int32 id = 1;
+  int32 level = 2;
+}
+
+message CategoryItemReq{
+  int32 id = 1;
+  string name = 2;
+  int32 parentCategoryId = 3;
+  int32 level = 4;
+}
+
+message CategoriesRes{
+  int32 total = 1;
+  repeated CategoryItemRes infoResList = 2;
+  string categoryJsonFormat = 3;
+}
+
+message CategoryItemRes{
+  int32 id = 1;
+  string name = 2;
+  int32 parentCategoryId = 3;
+  int32 level = 4;
+}
+
+message ProductItemReq{
+  int32 id = 1;
+}
+
+message DeleteProductItem{
+  int32 id = 1;
+}
+
+// 可传入的参数
+message ProductionConditionReq{
+  int32 minPrice = 1;
+  int32 maxPrice = 2;
+  bool isPop = 3;
+  bool isNew = 4;
+  int32 categoryId = 5;
+  int32 pageNo = 6;
+  int32 pageSize = 7;
+  string keyWord = 8;
+  int32 brandId = 9;
+}
+
+message ProductItemRes{
+  int32 id = 1;
+  int32 categoryId = 2;
+  string name = 3;
+  string sn = 4;
+  int32 stocks = 5;
+  int32 soldNum = 6;
+  int32 favNum = 7;
+  float price = 8;
+  float realPrice = 9;
+  string shortDesc = 10;
+  string desc = 11;
+  repeated string images = 12;
+  repeated string descImages = 13;
+  string coverImage = 14;
+  bool isNew = 15;
+  bool isPop = 16;
+  bool selling = 17;
+  int64 addTime = 18;
+  CategoryItemRes category = 19;
+  BrandItemRes brand = 20;
+}
+
+// 获取到的参数
+message ProductRes{
+  // 记录一下有多少值
+  int32 total = 1;
+  // 获取到的产品，做成一个数组返回
+  repeated ProductItemRes itemLIst = 2;
+}
+
+message BatchProductIdReq{
+  repeated int32 ids = 1;
+}
+
+message CreateProductItem{
+  int32 id=1;
+  string name=2;
+  string sn = 3;
+  int32 stocks=4;
+  float price=5;
+  float realPrice=6;
+  string shortDesc=7;
+  string productDesc=8;
+  repeated string images=9;
+  repeated string descImages=10;
+  string coverImage=11;
+  bool isNew=12;
+  bool isPop=13;
+  bool selling=14;
+  int32 brandId=15;
+  int32 favNum = 16;
+  int32 soldNum = 17;
+}
