@@ -89,8 +89,7 @@ func (s StockServer) BackStock(ctx context.Context, req *pb.SellItem) (*emptypb.
 	return &emptypb.Empty{}, nil
 }
 
-func (s StockServer) mustEmbedUnimplementedStockServiceServer() {
-}
+func (s StockServer) mustEmbedUnimplementedStockServiceServer() {}
 
 func StockModel2Pb(stock *model.Stock) *pb.ProductStockItem {
 	return &pb.ProductStockItem{
