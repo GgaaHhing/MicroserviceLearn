@@ -1,0 +1,23 @@
+syntax = "proto3";
+option go_package = "./pb";
+import "google/protobuf/empty.proto";
+
+service StockService{
+  //1 设置库存
+  rpc SetStock(ProductStockItem) returns(google.protobuf.Empty);
+  //2 荻取库存
+  rpc StockDetail (ProductStockItem) returns (ProductStockItem);
+  //3 扣减库存
+  rpc Sell(SellItem) returns(google.protobuf.Empty);
+  //4 归还库存
+  rpc BackStock(SellItem) returns (google.protobuf.Empty);
+}
+
+message ProductStockItem{
+  int32 productId = 1;
+  int32 num = 2;
+}
+
+message SellItem{
+  repeated ProductStockItem stockItemList = 1;
+}
