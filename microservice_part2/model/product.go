@@ -7,6 +7,14 @@ import (
 	"time"
 )
 
+type ProductCategoryBrand struct {
+	BaseModel
+	CategoryID int32
+	BrandID    int32
+	Category   *Category
+	Brand      *Brand
+}
+
 type BaseModel struct {
 	ID        int32 `gorm:"primary_key"`
 	CreatedAt time.Time
@@ -18,6 +26,7 @@ type BaseModel struct {
 type Category struct {
 	BaseModel
 	Name             string `gorm:"type:varchar(32);not null"`
+	Level            int32  `gorm:"type:int"`
 	ParentCategoryID int32
 	ParentCategory   *Category
 	//子类品类
@@ -61,6 +70,8 @@ type Product struct {
 	IsPop bool `gorm:"default:false"`
 	//是否新品
 	IsNew bool `gorm:"default:false"`
+	//库存
+	Stocks int32 `gorm:"type:int;default:0"`
 
 	Name string `gorm:"type:varchar(64);not null"`
 	//商品编号
@@ -75,6 +86,7 @@ type Product struct {
 	RealPrice float32 `gorm:"type:float;not null"`
 	//简短的商品描述
 	ShortDesc  string   `gorm:"type:varchar(255);not null"`
+	Desc       string   `gorm:"type:varchar(255);not null"`
 	Images     []string `gorm:"type:varchar(1024);not null"`
 	DescImages []string `gorm:"type:varchar(1024);not null"`
 	//封面

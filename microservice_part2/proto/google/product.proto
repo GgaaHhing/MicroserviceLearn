@@ -39,7 +39,7 @@ service ProductService{
 
   //品牌分类
   rpc CategoryBrandList(PagingReq) returns (CateGoryBrandListRes);
-  rpc GetCategoryBrandList(CategoryItemReq) returns (BrandItemRes);
+  rpc GetCategoryBrandList(CategoryItemReq) returns (BrandRes);
   rpc CreateCategoryBrand(CategoryBrandReq) returns (CategoryBrandRes);
   rpc DeleteCategoryBrand(CategoryBrandReq) returns (google.protobuf.Empty);
   rpc UpdateCategoryBrand(CategoryBrandReq) returns (google.protobuf.Empty);
@@ -168,24 +168,27 @@ message ProductionConditionReq{
 message ProductItemRes{
   int32 id = 1;
   int32 categoryId = 2;
-  string name = 3;
-  string sn = 4;
-  int32 stocks = 5;
-  int32 soldNum = 6;
-  int32 favNum = 7;
-  float price = 8;
-  float realPrice = 9;
-  string shortDesc = 10;
-  string desc = 11;
-  repeated string images = 12;
-  repeated string descImages = 13;
-  string coverImage = 14;
-  bool isNew = 15;
-  bool isPop = 16;
-  bool selling = 17;
-  int64 addTime = 18;
-  CategoryItemRes category = 19;
-  BrandItemRes brand = 20;
+  int32 brandId = 3;
+  string name = 4;
+  string sn = 5;
+  // 库存
+  int32 stocks = 6;
+  int32 soldNum = 7;
+  int32 favNum = 8;
+  float price = 9;
+  float realPrice = 10;
+  string shortDesc = 11;
+  string desc = 12;
+  repeated string images = 13;
+  repeated string descImages = 14;
+  string coverImage = 15;
+  bool isNew = 16;
+  bool isShipFree = 17;
+  bool isPop = 18;
+  bool selling = 19;
+  int64 addTime = 20;
+  CategoryItemRes category = 21;
+  BrandItemRes brand = 22;
 }
 
 // 获取到的参数
@@ -215,7 +218,9 @@ message CreateProductItem{
   bool isNew=12;
   bool isPop=13;
   bool selling=14;
-  int32 brandId=15;
-  int32 favNum = 16;
-  int32 soldNum = 17;
+  int32 categoryId = 15;
+  int32 brandId=16;
+  int32 favNum = 17;
+  int32 soldNum = 18;
+  bool IsFree = 19;
 }

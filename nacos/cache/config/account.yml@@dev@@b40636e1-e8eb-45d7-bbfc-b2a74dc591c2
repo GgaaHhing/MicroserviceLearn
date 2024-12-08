@@ -1,0 +1,35 @@
+db:
+  host: "127.0.0.1"
+  port: 3308
+  dbName: "DBTest"
+  userName: "root"
+  password: "root"
+
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+
+jwt_op:
+  signing_key: "123456"
+
+# 其实就是consul的ui配置
+consul:
+  host: "127.0.0.1"
+  port: 8500
+
+account_srv:
+  srvName: "account_srv"
+  host: "127.0.0.1"
+  port: 9095
+  tags:
+    - すきy
+    - スギ
+
+account_web:
+  srvName: "account_web"
+  host: "127.0.0.1"
+  port: 8081
+  tags:
+    - loser
+    - ダメよ

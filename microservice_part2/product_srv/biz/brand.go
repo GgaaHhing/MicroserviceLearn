@@ -72,13 +72,28 @@ func (p ProductServer) CreateBrand(ctx context.Context, req *pb.BrandItemReq) (*
 }
 
 func (p ProductServer) DeleteBrand(ctx context.Context, req *pb.BrandItemReq) (*emptypb.Empty, error) {
-	//TODO implement me
-	panic("implement me")
+	r := internal.DB.Delete(&model.Brand{}, req.Id)
+	if r.Error != nil {
+		return nil, errors.New(custom_error.DelBrandFail)
+	}
+	return &emptypb.Empty{}, nil
 }
 
 func (p ProductServer) UpdateBrand(ctx context.Context, req *pb.BrandItemReq) (*emptypb.Empty, error) {
-	//TODO implement me
-	panic("implement me")
+	var brand *model.Brand
+	r := internal.DB.Where(&brand, req.Id)
+	if r.RowsAffected == 0 {
+		return nil, errors.New(custom_error.BrandNotExits)
+	}
+	if req.Name != "" {
+		brand.Name = req.Name
+	}
+	if req.Logo != "" {
+		brand.Logo = req.Logo
+	}
+	//internal.DB.Updates(brand)	//效率更高，但是只更新非零字段，而且还会有一些关于NULL的注意点，需提防
+	internal.DB.Save(&brand)
+	return &emptypb.Empty{}, nil
 }
 
 func BrandModel2Pb(brand *model.Brand) *pb.BrandItemRes {

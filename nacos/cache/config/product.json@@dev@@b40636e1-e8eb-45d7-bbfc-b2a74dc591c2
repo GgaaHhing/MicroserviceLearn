@@ -1,0 +1,38 @@
+{
+  "db": {
+    "host": "127.0.0.1",
+    "port": 3308,
+    "dbName": "productdb",
+    "userName": "root",
+    "password": "root"
+  },
+  "redis": {
+    "host": "127.0.0.1",
+    "port": 6379
+  },
+  "jwt": {
+    "signing_key": "123456"
+  },
+  "consul": {
+    "host": "127.0.0.1",
+    "port": 8500
+  },
+  "product_srv": {
+    "srvName": "product_srv",
+    "host": "127.0.0.1",
+    "port": 9096,
+    "tags": [
+      "すきy",
+      "スギ"
+    ]
+  },
+  "product_web": {
+    "srvName": "product_srv",
+    "host": "127.0.0.1",
+    "port": 8082,
+    "tags": [
+      "loser",
+      "ダメよ"
+    ]
+  }
+}

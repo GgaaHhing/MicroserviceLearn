@@ -1,0 +1,32 @@
+2024-11-18T17:03:45.355+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-18T17:15:15.630+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-18T17:26:41.262+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-18T17:28:40.168+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-18T17:29:09.313+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-18T18:33:20.285+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-18T18:36:18.964+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-18T18:38:09.386+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-19T14:32:35.632+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-19T14:32:35.649+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"account.json","group":"pro","tenant":"a07dcd7a-d516-4d7e-864d-2c662239baba"}>, call domain error:<Get "http://localhost:8848/nacos/v1/cs/configs?dataId=account.json&group=pro&tenant=a07dcd7a-d516-4d7e-864d-2c662239baba": dial tcp [::1]:8848: connect: connection refused> , result:<>
+2024-11-19T14:32:35.651+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"account.json","group":"pro","tenant":"a07dcd7a-d516-4d7e-864d-2c662239baba"}>, call domain error:<Get "http://localhost:8848/nacos/v1/cs/configs?dataId=account.json&group=pro&tenant=a07dcd7a-d516-4d7e-864d-2c662239baba": dial tcp [::1]:8848: connect: connection refused> , result:<>
+2024-11-19T14:32:35.659+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"account.json","group":"pro","tenant":"a07dcd7a-d516-4d7e-864d-2c662239baba"}>, call domain error:<Get "http://localhost:8848/nacos/v1/cs/configs?tenant=a07dcd7a-d516-4d7e-864d-2c662239baba&dataId=account.json&group=pro": dial tcp [::1]:8848: connect: connection refused> , result:<>
+2024-11-19T14:32:35.659+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:Get "http://localhost:8848/nacos/v1/cs/configs?tenant=a07dcd7a-d516-4d7e-864d-2c662239baba&dataId=account.json&group=pro": dial tcp [::1]:8848: connect: connection refused 
+2024-11-21T10:27:20.545+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-21T10:29:14.153+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-21T10:29:47.140+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-26T10:36:03.782+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-11-26T10:36:03.792+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"product.json","group":"dev","tenant":"b40636e1-e8eb-45d7-bbfc-b2a74dc591c2"}>, call domain error:<Get "http://localhost:8848/nacos/v1/cs/configs?dataId=product.json&group=dev&tenant=b40636e1-e8eb-45d7-bbfc-b2a74dc591c2": dial tcp [::1]:8848: connect: connection refused> , result:<>
+2024-11-26T10:36:03.793+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"product.json","group":"dev","tenant":"b40636e1-e8eb-45d7-bbfc-b2a74dc591c2"}>, call domain error:<Get "http://localhost:8848/nacos/v1/cs/configs?group=dev&tenant=b40636e1-e8eb-45d7-bbfc-b2a74dc591c2&dataId=product.json": dial tcp [::1]:8848: connect: connection refused> , result:<>
+2024-11-26T10:36:03.794+0800	[31mERROR[0m	nacos_server/nacos_server.go:199	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"product.json","group":"dev","tenant":"b40636e1-e8eb-45d7-bbfc-b2a74dc591c2"}>, call domain error:<Get "http://localhost:8848/nacos/v1/cs/configs?group=dev&tenant=b40636e1-e8eb-45d7-bbfc-b2a74dc591c2&dataId=product.json": dial tcp [::1]:8848: connect: connection refused> , result:<>
+2024-11-26T10:36:03.795+0800	[31mERROR[0m	config_client/config_client.go:202	get config from server error:Get "http://localhost:8848/nacos/v1/cs/configs?group=dev&tenant=b40636e1-e8eb-45d7-bbfc-b2a74dc591c2&dataId=product.json": dial tcp [::1]:8848: connect: connection refused 
+2024-12-04T10:31:45.948+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:39:15.073+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:39:44.524+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:42:47.454+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:44:22.445+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:45:52.707+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:49:51.937+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:52:49.019+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:54:47.074+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:55:57.258+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>
+2024-12-04T10:57:22.066+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<nacos/log>   cacheDir:<nacos/cache>

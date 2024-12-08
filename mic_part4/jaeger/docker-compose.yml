@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "5775:5775/udp" # 5775 是 Zipkin 兼容的端口
+      - "6831:6831/udp" #  6831 是 Jaeger 原生的端口。
+      - "6832:6832/udp" # 是 Jaeger agent 的另一个端口，用于接收二进制格式的追踪数据（Thrift 紧凑格式）
+      - "5778:5778" #  是 Jaeger agent 的 HTTP 管理端口，用于暴露内部指标和配置。
+      - "16686:16686" # Jaeger UI 的端口，用于可视化追踪数据
+      - "14268:14268" # 用于 Jaeger collector 的 gRPC 端口，但通常不是与 agent 直接交互的端口。
+      - "9411:9411" # 用于 Jaeger collector 的 HTTP 端口，但通常不是与 agent 直接交互的端口。

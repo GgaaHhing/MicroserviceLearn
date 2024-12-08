@@ -1,0 +1,46 @@
+syntax = "proto3";
+option go_package = "./pb";
+package pb;
+import "google/protobuf/empty.proto";
+
+service ShopCartService {
+  //展示
+  rpc ShopCartItemList(AccountReq) returns (CartItemListRes);
+  //添加
+  rpc AddShopCartItem(ShopCartReq) returns (CartItemRes);
+  //删除
+  rpc DeleteShopCart(DelShopCartItem) returns (google.protobuf.Empty);
+  //更新
+  rpc UpdateShopCartItem(ShopCartReq) returns (google.protobuf.Empty);
+}
+
+message DelShopCartItem {
+  int32 accountId = 1;
+  int32 productId = 2;
+}
+
+message ShopCartReq {
+  int32 id = 1;
+  int32 accountId = 2;
+  int32 productId = 3;
+  int32 num = 4;
+  bool checked = 5;
+}
+
+message CartItemListRes {
+  //总购买件数
+  int32 total = 1;
+  repeated CartItemRes itemList = 2;
+}
+
+message CartItemRes {
+  int32 id = 1;
+  int32 accountId = 2;
+  int32 productId = 3;
+  int32 num = 4;
+  bool checked = 5;
+}
+
+message AccountReq {
+  int32 accountId = 1;
+}
