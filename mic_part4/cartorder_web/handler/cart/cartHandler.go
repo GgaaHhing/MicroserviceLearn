@@ -67,7 +67,7 @@ func ShopCartHandler(c *gin.Context) {
 
 }
 
-func AddHandler(c *gin.Context) {
+func AddCartHandler(c *gin.Context) {
 	var cart req.ShopCartReq
 	err := c.ShouldBindJSON(&cart)
 	if err != nil {
@@ -106,7 +106,7 @@ func AddHandler(c *gin.Context) {
 
 }
 
-func DeleteHandler(c *gin.Context) {
+func DeleteCartHandler(c *gin.Context) {
 	aId := c.Query("account_id")
 	pId := c.Query("product_id")
 	accountId, err := strconv.Atoi(aId)
@@ -145,7 +145,7 @@ func DeleteHandler(c *gin.Context) {
 	})
 }
 
-func UpdateHandler(c *gin.Context) {
+func UpdateCartHandler(c *gin.Context) {
 	var cart req.ShopCartReq
 	err := c.ShouldBindJSON(&cart)
 	if err != nil {
