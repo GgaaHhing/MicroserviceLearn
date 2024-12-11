@@ -7,7 +7,7 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/spf13/viper"
-	"testProject/mic_part4/proto/goole/pb"
+	"microserviceLearn/mic_part4/proto/goole/pb"
 )
 
 var (

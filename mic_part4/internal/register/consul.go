@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/hashicorp/consul/api"
 	"go.uber.org/zap"
-	"testProject/mic_part4/internal"
+	"microserviceLearn/mic_part4/internal"
 )
 
 type IRegister interface {

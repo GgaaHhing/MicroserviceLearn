@@ -5,12 +5,12 @@ import (
 	"github.com/google/uuid"
 	"github.com/hashicorp/consul/api"
 	"google.golang.org/grpc"
+	"microserviceLearn/microservice_part2/internal"
+	"microserviceLearn/microservice_part2/log"
+	"microserviceLearn/microservice_part2/product_srv/biz"
+	"microserviceLearn/microservice_part2/proto/google/pb"
+	"microserviceLearn/microservice_part2/util"
 	"net"
-	"testProject/microservice_part2/internal"
-	"testProject/microservice_part2/log"
-	"testProject/microservice_part2/product_srv/biz"
-	"testProject/microservice_part2/proto/google/pb"
-	"testProject/microservice_part2/util"
 )
 
 func init() {

@@ -5,11 +5,11 @@ import (
 	"errors"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"gorm.io/gorm/clause"
+	"microserviceLearn/microservice_part3/custom_error"
+	"microserviceLearn/microservice_part3/internal"
+	"microserviceLearn/microservice_part3/model"
+	"microserviceLearn/microservice_part3/proto/goole/pb"
 	"sync"
-	"testProject/microservice_part3/custom_error"
-	"testProject/microservice_part3/internal"
-	"testProject/microservice_part3/model"
-	"testProject/microservice_part3/proto/goole/pb"
 )
 
 var m sync.Mutex

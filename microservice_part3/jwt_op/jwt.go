@@ -3,8 +3,8 @@ package jwt_op
 import (
 	"errors"
 	"github.com/dgrijalva/jwt-go"
-	"testProject/microservice/log"
-	"testProject/microservice_part3/internal"
+	"microserviceLearn/microservice/log"
+	"microserviceLearn/microservice_part3/internal"
 	"time"
 )
 

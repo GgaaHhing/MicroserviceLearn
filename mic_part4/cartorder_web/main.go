@@ -5,11 +5,17 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lithammer/shortuuid/v4"
 	"go.uber.org/zap"
-	"testProject/mic_part4/cartorder_web/handler"
-	"testProject/mic_part4/internal"
-	"testProject/mic_part4/internal/register"
-	"testProject/mic_part4/log"
-	"testProject/mic_part4/util"
+	"microserviceLearn/mic_part4/cartorder_web/handler"
+	"microserviceLearn/mic_part4/cartorder_web/handler/cart"
+	"microserviceLearn/mic_part4/cartorder_web/handler/order"
+	"microserviceLearn/mic_part4/cartorder_web/middleware"
+	"microserviceLearn/mic_part4/internal"
+	"microserviceLearn/mic_part4/internal/register"
+	"microserviceLearn/mic_part4/log"
+	"microserviceLearn/mic_part4/util"
+	"os"
+	"os/signal"
+	"syscall"
 )
 
 var (
@@ -41,13 +47,38 @@ func main() {
 	}
 	addr := fmt.Sprintf("%s:%d", ip, port)
 	r := gin.Default()
-	cartGroup := r.Group("/v1/cartOrder")
+	cartGroup := r.Group("/v1/cartOrder").Use(middleware.Tracing())
 	{
-		cartGroup.GET("/list", handler.ShopCartHandler)
-		cartGroup.POST("/add", handler.AddHandler)
-		cartGroup.POST("/update", handler.UpdateHandler)
-		cartGroup.GET("/delete", handler.DeleteHandler)
+		cartGroup.GET("/list", cart.ShopCartHandler)
+		cartGroup.POST("/add", cart.AddCartHandler)
+		cartGroup.POST("/update", cart.UpdateCartHandler)
+		cartGroup.GET("/delete", cart.DeleteCartHandler)
+	}
+
+	orderGroup := r.Group("/v1/order").Use(middleware.Tracing())
+	{
+		orderGroup.GET("/list", order.ListHandler)
+		orderGroup.GET("/detail/:id", order.DetailHandler)
+		orderGroup.POST("/add", order.CreateHandler)
 	}
 	r.GET("/health", handler.HealthHandler)
-	r.Run(addr)
+
+	go func() {
+		err := r.Run(addr)
+		if err != nil {
+			zap.S().Panic(addr + "启动失败" + err.Error())
+		} else {
+			zap.S().Info(addr + "启动成功")
+		}
+	}()
+	//优雅退出
+	q := make(chan os.Signal)
+	signal.Notify(q, syscall.SIGINT, syscall.SIGTERM)
+	<-q
+	err := consulRegistry.DeRegister(randomId)
+	if err != nil {
+		zap.S().Panic("注销失败" + randomId + ":" + err.Error())
+	} else {
+		zap.S().Info("注销成功：" + randomId)
+	}
 }

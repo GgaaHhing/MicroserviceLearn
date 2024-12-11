@@ -4,10 +4,10 @@ import (
 	"context"
 	"errors"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
-	"testProject/mic_part4/cartorder_srv/model"
-	"testProject/mic_part4/custom_error"
-	"testProject/mic_part4/internal"
-	"testProject/mic_part4/proto/goole/pb"
+	"microserviceLearn/mic_part4/cartorder_srv/model"
+	"microserviceLearn/mic_part4/custom_error"
+	"microserviceLearn/mic_part4/internal"
+	"microserviceLearn/mic_part4/proto/goole/pb"
 )
 
 type CartOrderServer struct {

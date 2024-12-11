@@ -14,6 +14,16 @@ type ShopCartWebConfig struct {
 	Tags    []string `mapstructure:"tags" json:"tags"`
 }
 
+type JaegerConfig struct {
+	AgentHost string `mapstructure:"agentHost" json:"agentHost"`
+	AgentPort string `mapstructure:"agentPort" json:"agentPort"`
+}
+
+type RocketMqConfig struct {
+	Host string `mapstructure:"host" json:"host"`
+	Port int    `mapstructure:"port" json:"port"`
+}
+
 type AppConfig struct {
 	DBConfig          DBConfig          `mapstructure:"db" json:"db"`
 	RedisConfig       RedisConfig       `mapstructure:"redis" json:"redis"`
@@ -23,9 +33,5 @@ type AppConfig struct {
 	ShopCartWebConfig ShopCartWebConfig `mapstructure:"shopCart_web" json:"shopCart_web"`
 	JWTConfig         JWTConfig         `mapstructure:"jwt" json:"jwt"`
 	Debug             bool              `mapstructure:"debug" json:"debug"`
-}
-
-type JaegerConfig struct {
-	AgentHost string `mapstructure:"agentHost" json:"agentHost"`
-	AgentPort string `mapstructure:"agentPort" json:"agentPort"`
+	RocketMqConfig    RocketMqConfig    `mapstructure:"rocketMq" json:"rocketMq"`
 }

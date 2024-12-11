@@ -5,11 +5,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
-	"testProject/microservice_part2/internal"
-	"testProject/microservice_part2/internal/register"
-	"testProject/microservice_part2/log"
-	"testProject/microservice_part2/product_web/handler"
-	"testProject/microservice_part2/util"
+	"microserviceLearn/microservice_part2/internal"
+	"microserviceLearn/microservice_part2/internal/register"
+	"microserviceLearn/microservice_part2/log"
+	"microserviceLearn/microservice_part2/product_web/handler"
+	"microserviceLearn/microservice_part2/util"
 )
 
 var (

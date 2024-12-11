@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
+	"microserviceLearn/microservice/jwt_op"
 	"net/http"
-	"testProject/microservice/jwt_op"
 )
 
 func JWTAuth() gin.HandlerFunc {

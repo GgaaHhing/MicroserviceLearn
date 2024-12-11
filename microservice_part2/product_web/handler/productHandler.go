@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
+	"microserviceLearn/microservice/account_web/req"
+	"microserviceLearn/microservice_part2/custom_error"
+	"microserviceLearn/microservice_part2/internal"
+	"microserviceLearn/microservice_part2/log"
+	"microserviceLearn/microservice_part2/proto/google/pb"
 	"net/http"
 	"strconv"
-	"testProject/microservice/account_web/req"
-	"testProject/microservice_part2/custom_error"
-	"testProject/microservice_part2/internal"
-	"testProject/microservice_part2/log"
-	"testProject/microservice_part2/proto/google/pb"
 )
 
 var client pb.ProductServiceClient

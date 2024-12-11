@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"google.golang.org/protobuf/types/known/emptypb"
-	"testProject/microservice_part2/custom_error"
-	"testProject/microservice_part2/internal"
-	"testProject/microservice_part2/model"
-	"testProject/microservice_part2/proto/google/pb"
+	"microserviceLearn/microservice_part2/custom_error"
+	"microserviceLearn/microservice_part2/internal"
+	"microserviceLearn/microservice_part2/model"
+	"microserviceLearn/microservice_part2/proto/google/pb"
 )
 
 func (p ProductServer) GetAllCategoryList(ctx context.Context, empty *emptypb.Empty) (*pb.CategoriesRes, error) {

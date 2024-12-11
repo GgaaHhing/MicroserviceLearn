@@ -6,8 +6,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"log"
+	"microserviceLearn/microservice_part2/model"
 	"os"
-	"testProject/microservice_part2/model"
 	"time"
 )
 

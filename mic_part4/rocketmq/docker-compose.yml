@@ -1,0 +1,46 @@
+version: '3.8'
+
+
+services:
+  namesrv:
+    image: registry.cn-hangzhou.aliyuncs.com/jeecgdocker/rocketmq:4.9.6
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+    networks:
+      - rocketmq
+    command: sh mqnamesrv
+
+
+  broker:
+    image: registry.cn-hangzhou.aliyuncs.com/jeecgdocker/rocketmq:4.9.6
+    container_name: rmqbroker
+    ports:
+      - 10909:10909
+      - 10911:10911
+      - 10912:10912
+    environment:
+      - NAMESRV_ADDR=namesrv:9876
+    depends_on:
+      - namesrv
+    networks:
+      - rocketmq
+    command: sh mqbroker
+
+  #控制台，修改这里的端口可以修改ui的web位置
+  dashboard:
+    image: registry.cn-hangzhou.aliyuncs.com/jeecgdocker/rocketmq-dashboard:latest
+    container_name: rmqdashboard
+    ports:
+      - 8080:8080
+    environment:
+      - JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876
+    depends_on:
+      - namesrv
+    networks:
+      - rocketmq
+
+
+networks:
+  rocketmq:
+    driver: bridge

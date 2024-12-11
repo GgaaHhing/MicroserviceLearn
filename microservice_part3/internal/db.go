@@ -6,8 +6,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"log"
+	"microserviceLearn/microservice_part3/model"
 	"os"
-	"testProject/microservice_part3/model"
 	"time"
 )
 
@@ -43,7 +43,7 @@ func InitDB() {
 		panic(err)
 	}
 	fmt.Println("数据库连接成功！")
-	err = DB.AutoMigrate(&model.Stock{})
+	err = DB.AutoMigrate(&model.Stock{}, &model.StockItemDetail{})
 	if err != nil {
 		fmt.Println("AutoMigrate失败：", err)
 	}
